@@ -1,11 +1,14 @@
 <template>
-  <nav>
-    <ul>
-      dfdfkjdfk
-    </ul>
-  </nav>
-
+  <Navbar></Navbar>
   <router-view></router-view>
-
-  <footer>footer</footer>
 </template>
+
+<script>
+import Navbar from "../components/shared/Navbar.vue";
+
+export default {
+  components: {
+    Navbar,
+  },
+};
+</script>
