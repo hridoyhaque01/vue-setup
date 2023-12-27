@@ -2,7 +2,15 @@
 export default {
   content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        "green-main"  : "#1EC96B",
+      },
+      fontFamily: {
+        roboto: ["Roboto", "sans-serif"],
+
+      },
+    },
   },
   plugins: [require("daisyui")],
   daisyui: {
