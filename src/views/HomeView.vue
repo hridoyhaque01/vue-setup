@@ -1,63 +1,28 @@
 <template>
-  <main class="w-full h-screen flex flex-col items-center justify-center gap-4">
-    <input type="text" v-model="count" class="outline-none border p-2" />
-
-    <div class="flex items-center gap-6">
-      <button
-        type="button"
-        class="btn w-20"
-        @click="() => toggleCount('decreament')"
-      >
-        -
-      </button>
-      <div>{{ count }}</div>
-
-      <button
-        type="button"
-        class="btn w-20"
-        @click="() => toggleCount('increament')"
-      >
-        +
-      </button>
-    </div>
-    <div v-if="count <= 5">
-      <button>flk;jdsfklsdfsdfklj</button>
-    </div>
-    <router-link to="/about">Visit about</router-link>
-  </main>
+  <div class="flex flex-col gap-4 items-center justify-center h-screen">
+    <ul>
+      <li v-for="user in users">
+        {{ user?.name }}
+      </li>
+    </ul>
+    <button class="btn btn-primary">Show State</button>
+    <button class="btn btn-primary" @click="resetState">Clear State</button>
+  </div>
 </template>
 
 <script>
+import { mapState } from "vuex";
+import { resetState } from "../store/store";
 export default {
-  data() {
-    return {
-      count: 0,
-    };
+  computed: {
+    ...mapState({
+      users: (state) => state.users.users,
+    }),
   },
-
-  watch: {
-    count(newValue) {
-      console.log(`watch = ${newValue}`);
-    },
-  },
-
   methods: {
-    toggleCount(type) {
-      if (type === "increament") {
-        this.count++;
-      } else {
-        this.count--;
-      }
-    },
-  },
-
-  created() {
-    console.log("created");
-  },
-  mounted() {
-    console.log("mounted");
-
-    // alert("teeee");
+    resetState,
   },
 };
 </script>
+
+<style scoped></style>
