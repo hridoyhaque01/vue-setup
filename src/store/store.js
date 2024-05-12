@@ -1,8 +1,10 @@
 import { createStore } from "vuex";
 import users from "./features/users";
+import notifications from "./notifications";
 
 const initalState = {
   users: users,
+  notifications: notifications,
 };
 
 export const store = createStore({

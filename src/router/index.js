@@ -3,6 +3,10 @@ import Layout from "../layouts/Layout.vue";
 import AboutView from "../views/AboutView.vue";
 import Authentication from "../views/Authentication.vue";
 import HomeView from "../views/HomeView.vue";
+import ServiceOne from "../pages/ServiceOne.vue";
+import ServiceThree from "../pages/ServiceThree.vue";
+import ServiceTwo from "../pages/ServiceTwo.vue";
+
 const routes = [
   {
     path: "/",
@@ -20,6 +24,21 @@ const routes = [
       {
         path: "/auth",
         component: Authentication,
+      },
+      {
+        path: "/service-one",
+        name: "service1",
+        component: ServiceOne,
+      },
+      {
+        path: "/service-two",
+        name: "service2",
+        component: ServiceTwo,
+      },
+      {
+        path: "/service-three",
+        name: "service3",
+        component: ServiceThree,
       },
     ],
   },
