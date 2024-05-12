@@ -1,17 +1,19 @@
 <template>
-  <div>
-    <Home />
+  <div class="p-6 flex justify-end">
+    <Notifications />
   </div>
 </template>
 
 <script>
-import Home from "./views/HomeView.vue";
-
+import Notifications from "./components/shared/others/Notifications.vue";
 export default {
   components: {
-    Home,
+    Notifications,
+  },
+  data() {
+    return {
+      name: "hello",
+    };
   },
 };
 </script>
-
-<style scoped></style>

@@ -1,7 +1,10 @@
 import "swiper/css";
 import "swiper/css/pagination";
 import { createApp } from "vue";
+import "vue-select/dist/vue-select.css";
 import vue3GoogleLogin from "vue3-google-login";
+import Vue3Toastify from "vue3-toastify";
+import "vue3-toastify/dist/index.css";
 import { VueFire, VueFireAuth } from "vuefire";
 import App from "./App.vue";
 import "./app.css";
@@ -20,7 +23,7 @@ app.use(VueFire, {
   firebaseApp,
   modules: [VueFireAuth()],
 });
-
+app.use(Vue3Toastify);
 app.use(vue3GoogleLogin, {
   clientId: CLIENT_ID,
 });

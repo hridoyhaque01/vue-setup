@@ -24,6 +24,17 @@
   display: none;
 }
 
+.dropdown-content {
+  visibility: hidden !important;
+  opacity: 0 !important;
+  transition: all 0.3s ease-in-out;
+}
+
+.dropdown-open .dropdown-content {
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
 *.sidebar {
   scrollbar-width: none !important;
 }
