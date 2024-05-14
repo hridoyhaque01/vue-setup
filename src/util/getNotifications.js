@@ -1,6 +1,6 @@
 import Echo from "laravel-echo";
 
-export const getNotifications = (setter) => {
+export const getNotifications = (fn) => {
   const echo = new Echo({
     broadcaster: "pusher",
     key: "cb4c556076e700034c7c",
@@ -9,9 +9,8 @@ export const getNotifications = (setter) => {
   });
 
   echo
-    .channel("user-booking-notifications")
-    .listen("UserBookingNotification", (notification) => {
-      console.log({ notification });
-      setter.push(notification);
+    .channel("user-notification")
+    .listen("UserNotificationEvent", (notification) => {
+      fn(notification);
     });
 };

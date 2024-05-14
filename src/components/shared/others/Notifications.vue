@@ -25,12 +25,12 @@
         <div
           class="min-w-[22px] aspect-square text-xs text-white bg-green-main flex items-center justify-center rounded-full border-2 border-white absolute -top-2 -right-1"
         >
-          2
+          {{ notifications?.length }}
         </div>
       </div>
       <div
         tabindex="0"
-        class="dropdown-content z-[999] p-4 xs:px-6 shadow-card bg-white w-[310px] left-[-178px] xs:left-[-254px] sm:left-auto xs:right-0 xs:w-[382px] md:w-[606px] rounded-lg mt-4"
+        class="dropdown-content z-[999] p-4 xs:px-6 shadow-card bg-white w-[310px] left-[-178px] xs:left-[-254px] sm:left-auto xs:right-0 xs:w-[382px] md:w-[606px] rounded-lg mt-4 max-h-[736px] overflow-auto"
       >
         <!-- new content  -->
         <div>
@@ -77,11 +77,12 @@ export default {
     return {
       profile: businessProfile,
       notifications: [],
-      pusherNotifications: [],
     };
   },
   computed: {
     ...mapState({
+      auth: (state) => state.auth.auth,
+
       allNotifications: (state) => state.notifications.notifications,
       notificationLoading: (state) => state.notifications.isLoading,
       notificationError: (state) => state.notifications.isError,
@@ -100,12 +101,15 @@ export default {
   },
 
   mounted() {
-    this.getNotifications(this.pusherNotifications);
+    if (this.auth?.user_id) {
+      this.getNotifications(this.updateNotification);
+      this.getAllNotifications();
+      this.getAllReadableNotifications();
+    }
+
     document.body.addEventListener("click", (event) =>
       this.closeDropdown(event, this.$refs)
     );
-    this.getAllNotifications();
-    this.getAllReadableNotifications();
   },
   watch: {
     allNotifications(newValue) {
@@ -130,21 +134,23 @@ export default {
     toggleDropdown,
     getNotifications,
     getShowableNotifications() {
-      if (!this.allNotifications?.length) {
-        this.notifications = [];
-      }
-
       if (!this.readableNotifications?.length) {
-        this.notifications = [...this.allNotifications];
+        this.notifications = [...this.notifications, ...this.allNotifications];
+      } else if (
+        this.readableNotifications?.length &&
+        this.allNotifications?.length
+      ) {
+        const unreadNotification = this.allNotifications?.filter((item) => {
+          const findNotification = this.readableNotifications?.findIndex(
+            (readable) => readable?.notification_id === item?.notification_id
+          );
+          return findNotification != -1;
+        });
+        this.notifications = [...this.notifications, ...unreadNotification];
       }
-      const unreadNotifications = this.allNotifications.filter((item) => {
-        const test = !this.readableNotifications.some(
-          (readableItem) =>
-            readableItem?.notification_id === item?.notification_id
-        );
-        return test;
-      });
-      this.notifications = unreadNotifications;
+    },
+    updateNotification(notification) {
+      this.notifications = [notification, ...this.notifications];
     },
   },
 };
