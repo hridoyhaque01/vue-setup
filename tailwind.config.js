@@ -10,6 +10,7 @@ export default {
         disabled: "#D0D0D0",
         disable: "#D0D0D0",
         white: "#fff",
+        "white-400": "#F4F7FC",
         "white-200": "#E8E8E8",
         "black-600": "#808080",
         "black-700": "#474747",
@@ -28,8 +29,9 @@ export default {
         "gray-60": "#6B6B6B",
         "grey-30": "#D6D6D6",
         "grey-20": "#BFBFBF",
+        'gray-25': '#F9F9FC',
         "grey-light": "#AAA",
-
+        'gray-timestamp': '#858D9D',
         // main
         mainColor100: "#EFFEFD",
         mainColor500: "#03BBBE",
@@ -65,6 +67,7 @@ export default {
 
         // green veriants
         "green-main": "#1EC96B",
+        'green-msg': '#23C385',
 
         // black
 

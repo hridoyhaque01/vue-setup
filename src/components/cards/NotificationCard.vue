@@ -44,7 +44,7 @@
         <!-- re-schedule  -->
         <div
           class="w-14 aspect-square rounded-full bg-warning flex items-center justify-center"
-          v-if="item?.type === 're-schedule'"
+          v-if="item?.type === 'reschedule'"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -105,12 +105,10 @@
 export default {
   props: {
     item: Object,
-    },
-    methods: {
-        getTime() {
-        
-    }
-  }
+  },
+  methods: {
+    getTime() {},
+  },
 };
 </script>
 
