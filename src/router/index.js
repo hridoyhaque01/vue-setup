@@ -1,7 +1,12 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Layout from "../layouts/Layout.vue";
-import About from "../pages/about/About.vue";
-import Home from "../pages/home/Home.vue";
+import AboutView from "../views/AboutView.vue";
+import Authentication from "../views/Authentication.vue";
+import HomeView from "../views/HomeView.vue";
+import ServiceOne from "../pages/ServiceOne.vue";
+import ServiceThree from "../pages/ServiceThree.vue";
+import ServiceTwo from "../pages/ServiceTwo.vue";
+
 const routes = [
   {
     path: "/",
@@ -10,13 +15,30 @@ const routes = [
     children: [
       {
         path: "/",
-        component: Home,
+        component: HomeView,
       },
       {
         path: "/about",
-        name: "about",
-        component: About,
-        props: true,
+        component: AboutView,
+      },
+      {
+        path: "/auth",
+        component: Authentication,
+      },
+      {
+        path: "/service-one",
+        name: "service1",
+        component: ServiceOne,
+      },
+      {
+        path: "/service-two",
+        name: "service2",
+        component: ServiceTwo,
+      },
+      {
+        path: "/service-three",
+        name: "service3",
+        component: ServiceThree,
       },
     ],
   },
@@ -28,11 +50,6 @@ const router = createRouter({
   scrollBehavior(to, from, savedPosition) {
     return { top: 0, behavior: "smooth" };
   },
-});
-
-router.beforeEach((to, from, next) => {
-  console.log(to);
-  next();
 });
 
 export default router;

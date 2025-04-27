@@ -1,0 +1,40 @@
+:root {
+  --main-color: #3ad45a;
+  --secondary-color: #d4783a;
+}
+
+.main {
+  background-color: var(--main-color);
+}
+.secondary {
+  background-color: var(--secondary-color);
+}
+
+.business_slide .swiper {
+  padding: 0 16px !important;
+}
+
+.model_slide .swiper {
+  padding: 0 0 !important;
+}
+
+.sidebar::-webkit-scrollbar {
+  width: 0 !important;
+  -ms-overflow-style: none !important;
+  display: none;
+}
+
+.dropdown-content {
+  visibility: hidden !important;
+  opacity: 0 !important;
+  transition: all 0.3s ease-in-out;
+}
+
+.dropdown-open .dropdown-content {
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+*.sidebar {
+  scrollbar-width: none !important;
+}
